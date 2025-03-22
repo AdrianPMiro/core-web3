@@ -183,7 +183,7 @@ struct __FunctionOrProcedureBeginEndGuard
 #define CONTRACT_INDEX QBAY_CONTRACT_INDEX
 #define CONTRACT_STATE_TYPE QBAY
 #define CONTRACT_STATE2_TYPE QBAY2
-#include "contracts/Qbay.h"
+#include "contracts/HM25.h"
 #endif
 
 /* QUBICWORK CONTRACT*/
