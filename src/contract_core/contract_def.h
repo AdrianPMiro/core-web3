@@ -183,19 +183,8 @@ struct __FunctionOrProcedureBeginEndGuard
 #define CONTRACT_INDEX QBAY_CONTRACT_INDEX
 #define CONTRACT_STATE_TYPE QBAY
 #define CONTRACT_STATE2_TYPE QBAY2
-#include "contracts/HM25.h"
+#include "contracts/Qbay.h"
 #endif
-
-/* QUBICWORK CONTRACT
-#define MARKETPLACE_CONTRACT_INDEX 13
-#define CONTRACT_INDEX MARKETPLACE_CONTRACT_INDEX
-#define CONTRACT_STATE_TYPE MARKETPLACE
-#define CONTRACT_STATE2_TYPE MARKETPLACE2
-#include "contracts/Marketplace.h"
-*/
-#undef CONTRACT_INDEX
-#undef CONTRACT_STATE_TYPE
-#undef CONTRACT_STATE2_TYPE
 
 // new contracts should be added above this line
 
@@ -372,7 +361,6 @@ static void initializeContracts()
 #ifndef NO_QBAY
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(QBAY);
 #endif
-	//REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(MARKETPLACE);
     // new contracts should be added above this line
 #ifdef INCLUDE_CONTRACT_TEST_EXAMPLES
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(TESTEXA);
