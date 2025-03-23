@@ -77,8 +77,8 @@ private:
         uint8 status;
     };
 
-    // Map of agreements by ID
-    Map<uint64, Agreement> agreements;
+    // Map of agreements by ID - Using HashMap instead of Map
+    HashMap<uint64, Agreement, 1024> agreements;
     uint64 nextAgreementId;
 
     /**
@@ -104,7 +104,7 @@ private:
         
         // Assign ID and save
         uint64 agreementId = state.nextAgreementId++;
-        state.agreements.put(agreementId, newAgreement);
+        state.agreements.set(agreementId, newAgreement);
         
         output.agreementId = agreementId;
     _
@@ -116,11 +116,10 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        if (!state.agreements.contains(input.agreementId)) {
+        ValueT agreement;
+        if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
-        
-        Agreement agreement = state.agreements.get(input.agreementId);
         
         // Only seller can accept
         if (qpi.invocator() != agreement.seller) {
@@ -134,7 +133,7 @@ private:
         
         // Update status
         agreement.status = STATUS_ACCEPTED;
-        state.agreements.put(input.agreementId, agreement);
+        state.agreements.set(input.agreementId, agreement);
         
         output.success = true;
     _
@@ -146,11 +145,10 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        if (!state.agreements.contains(input.agreementId)) {
+        ValueT agreement;
+        if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
-        
-        Agreement agreement = state.agreements.get(input.agreementId);
         
         // Only buyer can pay
         if (qpi.invocator() != agreement.buyer) {
@@ -171,7 +169,7 @@ private:
         
         // Update status
         agreement.status = STATUS_PAID;
-        state.agreements.put(input.agreementId, agreement);
+        state.agreements.set(input.agreementId, agreement);
         
         output.success = true;
     _
@@ -183,11 +181,10 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        if (!state.agreements.contains(input.agreementId)) {
+        ValueT agreement;
+        if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
-        
-        Agreement agreement = state.agreements.get(input.agreementId);
         
         // Only buyer can confirm
         if (qpi.invocator() != agreement.buyer) {
@@ -204,7 +201,7 @@ private:
         
         // Update status
         agreement.status = STATUS_COMPLETED;
-        state.agreements.put(input.agreementId, agreement);
+        state.agreements.set(input.agreementId, agreement);
         
         output.success = true;
     _
@@ -216,12 +213,12 @@ private:
         output.exists = false;
         
         // Verify agreement exists
-        if (!state.agreements.contains(input.agreementId)) {
+        ValueT agreement;
+        if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
         
         // Get details
-        Agreement agreement = state.agreements.get(input.agreementId);
         output.buyer = agreement.buyer;
         output.seller = agreement.seller;
         output.amount = agreement.amount;

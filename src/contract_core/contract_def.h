@@ -184,11 +184,19 @@ struct __FunctionOrProcedureBeginEndGuard
 #define CONTRACT_STATE2_TYPE HM252
 #include "contracts/HM25.h"
 
+#undef CONTRACT_INDEX
+#undef CONTRACT_STATE_TYPE
+#undef CONTRACT_STATE2_TYPE
+
 #define MARKETPLACE_CONTRACT_INDEX 13
 #define CONTRACT_INDEX MARKETPLACE_CONTRACT_INDEX
 #define CONTRACT_STATE_TYPE MARKETPLACE
 #define CONTRACT_STATE2_TYPE MARKETPLACE2
 #include "contracts/Marketplace.h"
+
+#undef CONTRACT_INDEX
+#undef CONTRACT_STATE_TYPE
+#undef CONTRACT_STATE2_TYPE
 
 // new contracts should be added above this line
 
