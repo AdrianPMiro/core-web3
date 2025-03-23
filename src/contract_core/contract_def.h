@@ -184,6 +184,12 @@ struct __FunctionOrProcedureBeginEndGuard
 #define CONTRACT_STATE2_TYPE HM252
 #include "contracts/HM25.h"
 
+#define MARKETPLACE_CONTRACT_INDEX 13
+#define CONTRACT_INDEX MARKETPLACE_CONTRACT_INDEX
+#define CONTRACT_STATE_TYPE MARKETPLACE
+#define CONTRACT_STATE2_TYPE MARKETPLACE2
+#include "contracts/Marketplace.h"
+
 // new contracts should be added above this line
 
 #ifdef INCLUDE_CONTRACT_TEST_EXAMPLES
@@ -260,6 +266,7 @@ constexpr struct ContractDescription
     {"QVAULT", 138, 10000, sizeof(IPO)}, // proposal in epoch 136, IPO in 137, construction and first use in 138
     {"MSVAULT", 149, 10000, sizeof(MSVAULT)}, // proposal in epoch 147, IPO in 148, construction and first use in 149
     {"HM25", 152, 10000, sizeof(HM25)}, // Madrid hackathon SC template. construction and first use in 152. All shares are in dummy seed.
+    {"MARKETPLACE", 153, 10000, sizeof(MARKETPLACE)}, // Marketplace contract for business agreements
     // new contracts should be added above this line
 #ifdef INCLUDE_CONTRACT_TEST_EXAMPLES
     {"TESTEXA", 138, 10000, sizeof(IPO)},
@@ -355,6 +362,7 @@ static void initializeContracts()
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(QVAULT);
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(MSVAULT);
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(HM25);
+    REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(MARKETPLACE);
     // new contracts should be added above this line
 #ifdef INCLUDE_CONTRACT_TEST_EXAMPLES
     REGISTER_CONTRACT_FUNCTIONS_AND_PROCEDURES(TESTEXA);
