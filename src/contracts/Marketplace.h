@@ -77,8 +77,8 @@ private:
         uint8 status;
     };
 
-    // Map of agreements by ID - Using HashMap instead of Map
-    HashMap<uint64, Agreement, 1024> agreements;
+    // Map of agreements by ID
+    QPI::HashMap<uint64, Agreement, 1024> agreements;
     uint64 nextAgreementId;
 
     /**
@@ -116,7 +116,7 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        ValueT agreement;
+        Agreement agreement;
         if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
@@ -145,7 +145,7 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        ValueT agreement;
+        Agreement agreement;
         if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
@@ -181,7 +181,7 @@ private:
         output.success = false;
         
         // Verify agreement exists
-        ValueT agreement;
+        Agreement agreement;
         if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }
@@ -213,7 +213,7 @@ private:
         output.exists = false;
         
         // Verify agreement exists
-        ValueT agreement;
+        Agreement agreement;
         if (!state.agreements.get(input.agreementId, agreement)) {
             return;
         }

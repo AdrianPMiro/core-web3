@@ -274,7 +274,7 @@ constexpr struct ContractDescription
     {"QVAULT", 138, 10000, sizeof(IPO)}, // proposal in epoch 136, IPO in 137, construction and first use in 138
     {"MSVAULT", 149, 10000, sizeof(MSVAULT)}, // proposal in epoch 147, IPO in 148, construction and first use in 149
     {"HM25", 152, 10000, sizeof(HM25)}, // Madrid hackathon SC template. construction and first use in 152. All shares are in dummy seed.
-    {"MARKETPLACE", 153, 10000, sizeof(MARKETPLACE)}, // Marketplace contract for business agreements
+    {"MPLACE", 153, 10000, sizeof(MARKETPLACE)}, // Marketplace contract for business agreements
     // new contracts should be added above this line
 #ifdef INCLUDE_CONTRACT_TEST_EXAMPLES
     {"TESTEXA", 138, 10000, sizeof(IPO)},
