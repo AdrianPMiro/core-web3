@@ -235,6 +235,7 @@ constexpr unsigned short TESTEXB_CONTRACT_INDEX = (CONTRACT_INDEX + 1);
 // inaccessible for contracts
 #include "qpi_collection_impl.h"
 #include "qpi_trivial_impl.h"
+#include "qpi_hash_map_impl.h" // Añadimos esta línea para incluir las implementaciones de HashMap
 
 #include "platform/global_var.h"
 
